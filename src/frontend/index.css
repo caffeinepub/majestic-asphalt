@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   FONT FACE DECLARATIONS — Majestic Asphalt
+   ============================================================ */
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("/assets/fonts/CabinetGrotesk-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque-Variable.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============================================================
+   DESIGN TOKENS — Dark Industrial / Amber Accent Theme
+   ============================================================ */
+@layer base {
+  :root {
+    --radius: 0.25rem;
+
+    /* Core dark palette — near-black charcoal */
+    --background: 0.14 0.008 260;
+    --foreground: 0.94 0.01 90;
+
+    /* Cards — slightly lifted charcoal */
+    --card: 0.18 0.008 260;
+    --card-foreground: 0.94 0.01 90;
+
+    /* Popover */
+    --popover: 0.18 0.008 260;
+    --popover-foreground: 0.94 0.01 90;
+
+    /* Primary — amber/yellow accent */
+    --primary: 0.82 0.18 80;
+    --primary-foreground: 0.12 0.01 260;
+
+    /* Secondary — medium charcoal */
+    --secondary: 0.24 0.008 260;
+    --secondary-foreground: 0.94 0.01 90;
+
+    /* Muted */
+    --muted: 0.22 0.008 260;
+    --muted-foreground: 0.6 0.02 260;
+
+    /* Accent — warm amber subtle */
+    --accent: 0.28 0.025 80;
+    --accent-foreground: 0.82 0.18 80;
+
+    /* Destructive */
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+
+    /* Border & inputs */
+    --border: 0.3 0.012 260;
+    --input: 0.26 0.012 260;
+    --ring: 0.82 0.18 80;
+
+    /* Charts */
+    --chart-1: 0.82 0.18 80;
+    --chart-2: 0.6 0.118 184.704;
+    --chart-3: 0.398 0.07 227.392;
+    --chart-4: 0.828 0.189 84.429;
+    --chart-5: 0.769 0.188 70.08;
+
+    /* Sidebar */
+    --sidebar: 0.16 0.008 260;
+    --sidebar-foreground: 0.94 0.01 90;
+    --sidebar-primary: 0.82 0.18 80;
+    --sidebar-primary-foreground: 0.12 0.01 260;
+    --sidebar-accent: 0.24 0.008 260;
+    --sidebar-accent-foreground: 0.94 0.01 90;
+    --sidebar-border: 0.3 0.012 260;
+    --sidebar-ring: 0.82 0.18 80;
+
+    /* Custom amber tokens */
+    --amber: 0.82 0.18 80;
+    --amber-dim: 0.72 0.16 80;
+    --amber-glow: 0.88 0.2 82;
+    --surface-1: 0.16 0.008 260;
+    --surface-2: 0.2 0.008 260;
+    --surface-3: 0.26 0.008 260;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Cabinet Grotesk", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* ============================================================
+   UTILITY CLASSES
+   ============================================================ */
+@layer utilities {
+  .font-display {
+    font-family: "Bricolage Grotesque", sans-serif;
+  }
+
+  .text-amber {
+    color: oklch(var(--amber));
+  }
+
+  .bg-amber {
+    background-color: oklch(var(--amber));
+  }
+
+  .bg-surface-1 {
+    background-color: oklch(var(--surface-1));
+  }
+
+  .bg-surface-2 {
+    background-color: oklch(var(--surface-2));
+  }
+
+  .bg-surface-3 {
+    background-color: oklch(var(--surface-3));
+  }
+
+  .border-amber {
+    border-color: oklch(var(--amber));
+  }
+
+  /* Noise texture overlay for depth */
+  .noise-overlay::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .amber-glow {
+    box-shadow: 0 0 40px oklch(var(--amber) / 0.15), 0 0 80px oklch(var(--amber) / 0.05);
+  }
+
+  .text-shadow-strong {
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.8);
+  }
+}
